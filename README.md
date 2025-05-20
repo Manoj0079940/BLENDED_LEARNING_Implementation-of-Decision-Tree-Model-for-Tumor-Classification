@@ -33,12 +33,6 @@ Developed by: MANOJ M
 
 RegisterNumber:  212223230122
 ```
-/*
-Program to  implement a Decision Tree model for tumor classification.
-Developed by: Nandakesore J
-RegisterNumber: 212223240103
-
-
 # Import the necessary libraries
 import pandas as pd
 from sklearn.model_selection import train_test_split
