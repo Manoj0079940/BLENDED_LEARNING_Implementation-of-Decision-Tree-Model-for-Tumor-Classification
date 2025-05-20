@@ -9,22 +9,90 @@ To implement and evaluate a Decision Tree model to classify tumors as benign or 
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+1.Load Data
+  Import the dataset to initiate the analysis.
 
+2.Explore Data
+  Examine the dataset to identify patterns, distributions, and relationships.
+
+3.Select Features
+  Determine the most important features to enhance model accuracy and efficiency.
+
+4.Split Data
+  Separate the dataset into training and testing sets for effective validation.
+
+5.Train Model
+  Use the training data to build and train the model.
+
+6.Evaluate Model
+  Measure the model’s performance on the test data with relevant metrics.
+  
 ## Program:
+
+Developed by: MANOJ M
+
+RegisterNumber:  212223230122
 ```
 /*
 Program to  implement a Decision Tree model for tumor classification.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: Nandakesore J
+RegisterNumber: 212223240103
+
+
+# Import the necessary libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Step 1: Load the dataset
+data = pd.read_csv('tumor.cvs')
+
+# Step 2: Explore the dataset
+# Display the first few rows and column names to verify the structure
+print(data.head())
+print(data.columns)
+
+# Step 3: Select features and target variable
+# Drop 'id' and other non-feature columns, using 'diagnosis' as the target
+X = data.drop(columns=['Class'])  # Remove any irrelevant columns like 'id'
+y = data['Class']  # The target column indicating benign or malignant diagnosis
+
+# Step 4: Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Step 5: Initialize and train the Decision Tree model
+# Create a Decision Tree Classifier and fit it on the training data
+model = DecisionTreeClassifier(random_state=42)
+model.fit(X_train, y_train)
+
+# Step 6: Evaluate the model
+# Predict on the test set and evaluate the results
+y_pred = model.predict(X_test)
+
+# Print the accuracy and classification metrics for the model
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+print("Classification Report:\n", classification_report(y_test, y_pred))
+
+# Step 7: Visualize the Confusion Matrix
+# Generate a heatmap of the confusion matrix for better visualization
+conf_matrix = confusion_matrix(y_test, y_pred)
+sns.heatmap(conf_matrix, annot=True, fmt="d", cmap="Blues")
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
+plt.show()
 ```
 
+
 ## Output:
-![simple linear regression model for predicting the marks scored](sam.png)
+![image](https://github.com/user-attachments/assets/e0360cd1-f0ff-4bcf-b9c3-55ad768110ea)
+![image](https://github.com/user-attachments/assets/0f9e2963-59c9-46a8-93c6-46a9bc3afea3)
+![image](https://github.com/user-attachments/assets/e6861b57-ec24-4cc4-8871-6c25906f71b0)
+
 
 
 ## Result:
